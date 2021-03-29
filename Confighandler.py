@@ -28,7 +28,7 @@ def validate_file(filename):
 if __name__ == "__main__":
     filename="my_config.txt"
     valid=validate_file(filename)
-    print(valid)
+    # print(valid)
     # print all the setting values set to ON/true on the configuration file.
     if valid:
         print("File %s is a valid text file. Now printing all the settings set ON" %filename)
