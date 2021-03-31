@@ -8,10 +8,16 @@
 
 
 def parse_file(filename):
-    # open the file to read, and implement the logic as required by the assignment-4
+   
+    #open the file to read, and implement the logic as required by the assignment-4
 
+    fd = open(filename, "r")
+    linerows = fd.readlines()
 
-    pass # //you can remove this line on your side.
+    for line in linerows:
+        if re.search("true", line):
+            data_values = line.split(":")
+            print(data_values[0])
 
 
 def validate_file(filename):
