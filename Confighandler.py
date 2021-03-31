@@ -21,7 +21,6 @@ def validate_file(filename):
         validate = True
 
     return validate
-    pass # //you can remove this line on your side
 
 
 # Main program, do not modify it.
