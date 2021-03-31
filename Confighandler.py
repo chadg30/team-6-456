@@ -1,5 +1,5 @@
-# Author: Naresh Adh
-# Date: 03/15/2021
+# Author: Chad Green & Diyorbek J
+# Date: 03/31/2021
 # Through this program, students will learn to:
 # 1. validate an input file and contents in it.
 # 2. Handle file opening in a mode
@@ -13,12 +13,14 @@ def parse_file(filename):
 
     fd = open(filename, "r")
     linerows = fd.readlines()
+    linecheck = False
 
     for line in linerows:
-        if re.search("true", line):
+        if 'true' in line:
             data_values = line.split(":")
             print(data_values[0])
 
+    fd.close()
 
 def validate_file(filename):
     # validate if the file is a text file, if it is return true, otherwise return false
@@ -33,7 +35,7 @@ def validate_file(filename):
 if __name__ == "__main__":
     filename="my_config.txt"
     valid=validate_file(filename)
-    # print(valid)
+    print(valid)
     # print all the setting values set to ON/true on the configuration file.
     if valid:
         print("File %s is a valid text file. Now printing all the settings set ON" %filename)
