@@ -22,6 +22,7 @@ def parse_file(filename):
 
     fd.close()
 
+
 def validate_file(filename):
     # validate if the file is a text file, if it is return true, otherwise return false
     validate = False
