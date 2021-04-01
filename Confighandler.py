@@ -17,7 +17,7 @@ def parse_file(filename):
     lineread = parsefile.readlines()
     # reads the lines line by line
     for line in lineread:
-        # if true is in the line then the line is split and the keyword is printed
+        # if 'true' is in the line then the line is split and the keyword is printed
         if 'true' in line:
             keywords = line.split(":")
             print(keywords[0])
