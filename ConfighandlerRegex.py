@@ -8,6 +8,8 @@
     #4. Use tools to check is a regular expression is 'evil'
 
 #function-1
+import re
+
 def classify_settings(filename):
 
     # implement function-1 as instructed
@@ -19,18 +21,30 @@ def classify_settings(filename):
     #Open the file
     fd = open(filename, "r")
     #Read line by line from the file
-    line=fd.readlines()
-        #use regular expression to find a line which is set to be 'true'
-            #then parse the line to get the keyword, and insert it into seton list
-            # seton +=[keyword]
+    lines=fd.readlines()
 
+    for line in lines:
+        if re.findall("true", line):
+            keyword = line.split(":")
+            seton += [keyword[0]]
+        elif re.findall("false", line):
+            keyword = line.split(":")
+            setoff += [keyword[0]]
+        elif re.findall("default", line):
+            keyword = line.split(":")
+            setdefault += [keyword[0]]
+        # use regular expression to find a line which is set to be 'true'
+        # then parse the line to get the keyword, and insert it into seton list
+    print(seton)
+    print(setoff)
+    print(setdefault)
         # use regular expression to find a line which is set to be 'false'
              # then parse the line to get the keyword, and insert it into setoff list
-             # setoff +=[keyword]
+             #
 
         # use regular expression to find a line which is set to be 'default'
              # then parse the line to get the keyword, and insert it into setoff list
-             # setdefault +=[keyword]
+             #
 
     #//return lists
     return seton, setoff, setdefault
@@ -43,8 +57,14 @@ def  print_settings(setonlist, setofflist, setdefaultlist) :
     #implement function-2 as instructed
     non = len(setonlist)
     print("1) Set On keywords:")
-    for i in range(1,non+1):
+    for i in range(0,non):
         print("{i}) {}", i, setonlist[i])
+    print("2) Set Off keywords:")
+    for i in range(0, non):
+        print("{i}) {}", i, setofflist[i])
+    print("3) Set Default keywords:")
+    for i in range(0, non):
+        print("{i}) {}", i, setdefaultlist[i])
 
     pass
 
