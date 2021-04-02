@@ -17,9 +17,9 @@ def classify_settings(filename):
     setdefault = []
 
     #Open the file
-
+    fd = open(filename, "r")
     #Read line by line from the file
-
+    line=fd.readlines()
         #use regular expression to find a line which is set to be 'true'
             #then parse the line to get the keyword, and insert it into seton list
             # seton +=[keyword]
