@@ -1,11 +1,11 @@
-#Author: Naresh Adh
-#Date: 03/26/2021
-#Through this program, students will learn to:
-    #1. validate an input file and contents in it using regular expression.
-    #2. Handle file opening in a mode
-    #2.1. Handle file exceptions, etc.
-    #3. Search file contents
-    #4. Use tools to check is a regular expression is 'evil'
+# Authors: Chad Green and Dyorbek Juraev
+# Date: 4/2/2021
+'''
+This program:
+    Reads a file line by line and checks for a word true, false, or default in each line. If found the line is split and the
+    keyword is set to its designated list. The lists are then sent back to main and then sent to a print function that prints and
+    formats each keyword.
+'''
 
 #function-1
 import re
@@ -14,14 +14,13 @@ import re
 def classify_settings(filename):
 
     # implement function-1 as instructed
-
     seton = []
     setoff = []
     setdefault = []
 
-    #Open the file
+    # Open the file
     file = open(filename, "r")
-    #Read line by line from the file
+    # Read line by line from the file
     lines = file.readlines()
 
     for line in lines:
