@@ -24,27 +24,25 @@ def classify_settings(filename):
     lines=fd.readlines()
 
     for line in lines:
-        if re.findall("true", line):
-            keyword = line.split(":")
-            seton += [keyword[0]]
-        elif re.findall("false", line):
-            keyword = line.split(":")
-            setoff += [keyword[0]]
-        elif re.findall("default", line):
-            keyword = line.split(":")
-            setdefault += [keyword[0]]
         # use regular expression to find a line which is set to be 'true'
         # then parse the line to get the keyword, and insert it into seton list
-    print(seton)
-    print(setoff)
-    print(setdefault)
+        if re.search("true", line):
+            onword = re.split(":", line)
+            seton += [onword[0]]
         # use regular expression to find a line which is set to be 'false'
-             # then parse the line to get the keyword, and insert it into setoff list
-             #
-
+        # then parse the line to get the keyword, and insert it into setoff list
+        elif re.search("false", line):
+            offword = re.split(":", line)
+            setoff += [offword[0]]
         # use regular expression to find a line which is set to be 'default'
-             # then parse the line to get the keyword, and insert it into setoff list
-             #
+        # then parse the line to get the keyword, and insert it into setoff list
+        elif re.search("default", line):
+            defaultword = re.split(":", line)
+            setdefault += [defaultword[0]]
+
+    # print(seton)
+    # print(setoff)
+    #print(setdefault)
 
     #//return lists
     return seton, setoff, setdefault
@@ -56,15 +54,19 @@ def  print_settings(setonlist, setofflist, setdefaultlist) :
 
     #implement function-2 as instructed
     non = len(setonlist)
+    non2 = len(setofflist)
+    non3 = len(setdefaultlist)
     print("1) Set On keywords:")
-    for i in range(0,non):
-        print("{i}) {}", i, setonlist[i])
+    for i in range(0, non):
+        print("\t", i+1, ")", setonlist[i])
+
     print("2) Set Off keywords:")
-    for i in range(0, non):
-        print("{i}) {}", i, setofflist[i])
+    for i in range(0, non2):
+        print("\t", i+1, ")", setofflist[i])
+
     print("3) Set Default keywords:")
-    for i in range(0, non):
-        print("{i}) {}", i, setdefaultlist[i])
+    for i in range(0, non3):
+        print("\t", i+1, ")", setdefaultlist[i])
 
     pass
 
